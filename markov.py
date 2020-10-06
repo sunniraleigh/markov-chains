@@ -41,8 +41,14 @@ def make_chains(text_string):
     """
 
     chains = {}
+    words = text_string.split()
 
-    # your code goes here
+    for i in range(len(words) - 2):
+        pair_tuple = (words[i], words[i + 1])
+        chains[pair_tuple] = chains.get(pair_tuple, [])
+        chains[pair_tuple].append(words[i + 2])
+
+    chains[(words[-2], words[-1])] = []
 
     return chains
 
